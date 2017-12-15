@@ -1,0 +1,19 @@
+<div class="layui-header">
+    <div class="layui-logo">新闻CMS</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <!-- <include file="index/nav" /> -->
+
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          {$Think.session.admin_user.user_name}
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="/php/newscms/index.php?m=admin&c=login&a=loginout">退了</a></li>
+    </ul>
+  </div>

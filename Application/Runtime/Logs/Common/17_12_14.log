@@ -1,0 +1,6 @@
+[ 2017-12-14T15:42:59+08:00 ] ::1 /php/newscms/index?m=admin&c=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:Index
+
