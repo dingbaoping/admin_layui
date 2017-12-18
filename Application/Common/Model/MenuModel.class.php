@@ -18,7 +18,11 @@ class MenuModel extends Model {
         $data['status'] = array('neq',-1);
         $offset = ($page - 1) * $pageSize;
         // $list = $this->_db->where($data)->order('list_order desc,menu_id desc')->limit($offset,$pageSize)->select();
-         $list = $this->_db->select();
+         $list = $this->_db->limit($pageSize)->select();
         return $list;
+    }
+     public function getTotal() {
+         $total = $this->_db->select();
+        return $total;
     }
 }

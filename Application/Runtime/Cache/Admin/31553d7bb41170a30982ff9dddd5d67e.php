@@ -193,7 +193,7 @@ $('.layui-btn').click(function() {
          }
 
          if(msg.status==1){
-          return dialog.success(msg.message,'/php/newscms/admin.php?c=index');
+          return dialog.success(msg.message,save_url);
          }
 
        }

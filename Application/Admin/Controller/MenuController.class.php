@@ -2,11 +2,51 @@
 namespace Admin\Controller;
 use Think\Controller;
 class MenuController extends Controller {
+
     public function index(){
-    	$ret=D('Menu')->getMenus();
-    	// dump($ret);
-        return $this->display();
+    	if(IS_AJAX){
+    		$menus=D('Menu')->getMenus();
+    		$total=D('Menu')->getTotal();
+	    	// $this->ajaxReturn([
+	    	// 'code' => 0,
+	    	// 	'msg'=>'',
+	    	// 	'count' => count($total),
+	    	// 	'data' => $menus,
+	    	// 	]);
+	    	echo json_encode([
+	    		'code' => 0,
+	    		'msg'=>'',
+	    		'count' => count($total),
+	    		'data' => $menus,
+	    		]);
+	    }
+	    else{
+	    	return $this->display();
+	    }
     }
+
+    // public function index() {
+    //     $data = array();
+    //     if(isset($_REQUEST['type']) && in_array($_REQUEST['type'], array(0,1))) {
+    //         $data['type'] = intval($_REQUEST['type']);
+    //         $this->assign('type',$data['type']);
+    //     }else{
+    //         $this->assign('type',-100);
+    //     }
+    //     /**
+    //      * 分页操作逻辑
+    //      */
+    //     $page = $_REQUEST['p'] ? $_REQUEST['p'] : 1;
+    //     $pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 3;
+    //     $menus = D("Menu")->getMenus($data,$page,$pageSize);
+    //     $menusCount = D("Menu")->getMenusCount($data);
+
+    //     $res = new \Think\Page($menusCount, $pageSize);
+    //     $pageRes = $res->show();
+    //     $this->assign('pageRes', $pageRes);
+    //     $this->assign('menus',$menus);
+    // 	$this->display();
+    // }
 
     public function add(){
     	if($_POST){

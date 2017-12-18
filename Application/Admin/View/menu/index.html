@@ -11,6 +11,15 @@
      line-height: 3;
      padding-left: 15px;
     }
+   .layui-table-view .layui-table {
+        width: 100%;
+    }
+    .search{
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-left: 5px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body class="layui-layout-body">
@@ -33,8 +42,20 @@
       <div>
         <a href="/php/newscms/index.php?m=admin&c=menu&a=add" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe654;</i> 添加</a>
         <button class="layui-btn layui-btn-normal layui-btn-sm"><i class="layui-icon">&#xe642;</i> 编辑</button>
+    
+        <div class="layui-inline" style="margin-left: 20px;">
+          <input class="search" name="search" id="search" autocomplete="off">
+        </div>
+        <button class="layui-btn layui-btn-sm" data-type="reload"><i class="layui-icon">&#xe615;</i> 搜索</button>
+
       </div>
-      <table class="layui-table" lay-skin="line" id="demo" lay-filter="test"></table>
+
+      
+  
+      
+
+      <table class="layui-table" lay-skin="line" id="demo" lay-filter="data"></table>
+
     </div>
   </div>
   
@@ -45,28 +66,28 @@
 <script type="text/javascript" src="/php/newscms/Public/layui-v2.2.45/layui.js"></script>
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
+layui.use(['element','table'], function(){
   var element = layui.element;  
-});
-layui.use('table', function(){
   var table = layui.table;
   
   //第一个实例
   table.render({
     elem: '#demo',
-    height: 315,
-    url: '/php/newscms/index.php?m=admin&c=menu', //数据接口
+    // height: 315,
     page: true, //开启分页
-    cols: [[ //表头
-  
-      {field: 'menu_id', title: 'ID', width:80, sort: true, fixed: 'left'},
-      {field: 'name', title: '菜单名', width:80},
-      {field: 'm', title: '模块名', width:80, sort: true},
+    url: '/php/newscms/admin/menu/index', //数据接口
+    cols: [[ //表头  
+      {type:'checkbox'},
+      {field: 'menu_id', title: 'ID', width:80},
+      {field: 'name', title: '菜单名', width:120},
+      {field: 'm', title: '模块名', width:120},
       {field: 'type', title: '类型', width:80},
       {field: 'status', title: '状态', width: 177},
-      {field: 'experience', title: '操作', width: 80, sort: true},
+      {field: 'experience', title: '操作', width: 80},
     ]]
   });
+
+
   
 });
 </script>
